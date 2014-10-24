@@ -1,0 +1,16 @@
+apply plugin: 'scala'
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.palominolabs.gradle.task:gradle-git-clone-task:0.0.2'
+  }
+}
+
+task cloneRepo(type: com.palominolabs.gradle.task.git.clone.GitCloneTask) {
+  dir = file("$buildDir/scalaj-http")
+  uri = 'https://github.com/scalaj/scalaj-http.git'
+  treeish = '0.3.16' // a git hash, or tag name, or branch name
+}
