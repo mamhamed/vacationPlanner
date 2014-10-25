@@ -1,4 +1,5 @@
 apply plugin: 'scala'
+apply plugin: 'idea'
 
 buildscript {
   repositories {
@@ -6,7 +7,9 @@ buildscript {
   }
   dependencies {
     classpath 'com.palominolabs.gradle.task:gradle-git-clone-task:0.0.2'
+    classpath 'org.json4s:json4s-jackson_2.10:3.2.10'
   }
+
 }
 
 task cloneRepo(type: com.palominolabs.gradle.task.git.clone.GitCloneTask) {
