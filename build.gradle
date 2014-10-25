@@ -8,12 +8,18 @@ buildscript {
   dependencies {
     classpath 'com.palominolabs.gradle.task:gradle-git-clone-task:0.0.2'
     classpath 'org.json4s:json4s-jackson_2.10:3.2.10'
+    classpath 'org.scalaj:scalaj-http_2.8.0:0.3.2'
   }
 
 }
 
-task cloneRepo(type: com.palominolabs.gradle.task.git.clone.GitCloneTask) {
-  dir = file("$buildDir/scalaj-http")
-  uri = 'https://github.com/scalaj/scalaj-http.git'
-  treeish = '0.3.16' // a git hash, or tag name, or branch name
+configurations {
+    provided
+    provided.extendsFrom(compile)
+}
+
+idea {
+    module {
+        scopes.PROVIDED.plus += configurations.provided
+    }
 }
