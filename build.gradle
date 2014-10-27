@@ -8,7 +8,9 @@ buildscript {
   dependencies {
     classpath 'com.palominolabs.gradle.task:gradle-git-clone-task:0.0.2'
     classpath 'org.json4s:json4s-jackson_2.10:3.2.10'
-    classpath 'org.scalaj:scalaj-http_2.8.0:0.3.2'
+    classpath 'org.scalaj:scalaj-http_2.10:0.3.16'
+    classpath 'org.json4s:json4s-native_2.10:3.2.10'
+
   }
 
 }
@@ -22,4 +24,9 @@ idea {
     module {
         scopes.PROVIDED.plus += configurations.provided
     }
+}
+
+task copyDeps(type: Copy) {
+  from configurations.runtime
+  into 'build/lib'
 }
